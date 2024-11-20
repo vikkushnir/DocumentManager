@@ -4,9 +4,12 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.Instant;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * For implement this task focus on clear code, and make this solution as simple readable as possible
@@ -18,6 +21,7 @@ import java.util.Optional;
  * This class could be auto tested
  */
 public class DocumentManager {
+    private final Map<String, Document> docsStorage = new HashMap<>();
 
     /**
      * Implementation of this method should upsert the document to your storage
@@ -27,8 +31,11 @@ public class DocumentManager {
      * @return saved document
      */
     public Document save(Document document) {
-
-        return null;
+        if (document.getId() == null) {
+            document.setId(UUID.randomUUID().toString());
+        }
+        docsStorage.put(document.getId(), document);
+        return document;
     }
 
     /**
@@ -38,8 +45,13 @@ public class DocumentManager {
      * @return list matched documents
      */
     public List<Document> search(SearchRequest request) {
-
-        return Collections.emptyList();
+        return docsStorage.values().stream()
+                .filter(document -> matchesTitlePrefixes(document, request))
+                .filter(document -> matchesContainsContents(document, request))
+                .filter(document -> matchesAuthorIds(document, request))
+                .filter(document -> matchesCreatedFrom(document, request))
+                .filter(document -> matchesCreatedTo(document, request))
+                .collect(Collectors.toList());
     }
 
     /**
@@ -49,13 +61,40 @@ public class DocumentManager {
      * @return optional document
      */
     public Optional<Document> findById(String id) {
-
-        return Optional.empty();
+        return Optional.ofNullable(docsStorage.get(id));
     }
 
+    private boolean matchesTitlePrefixes(Document document, SearchRequest request) {
+        List<String> titlePrefixes = request.getTitlePrefixes();
+        return titlePrefixes == null || titlePrefixes.stream()
+                .allMatch(prefix -> document.getTitle().startsWith(prefix));
+    }
+
+    private boolean matchesContainsContents(Document document, SearchRequest request) {
+        List<String> containsContents = request.getContainsContents();
+        return containsContents == null || containsContents.stream()
+                .allMatch(content -> document.getContent().contains(content));
+    }
+
+    private boolean matchesAuthorIds(Document document, SearchRequest request) {
+        List<String> authorIds = request.getAuthorIds();
+        return authorIds == null || authorIds.contains(document.getAuthor().getId());
+    }
+
+    private boolean matchesCreatedFrom(Document document, SearchRequest request) {
+        Instant createdFrom = request.getCreatedFrom();
+        return createdFrom == null || !document.getCreated().isAfter(createdFrom);
+    }
+
+    private boolean matchesCreatedTo(Document document, SearchRequest request) {
+        Instant createdTo = request.getCreatedTo();
+        return createdTo == null || !document.getCreated().isBefore(createdTo);
+
+    }
     @Data
     @Builder
     public static class SearchRequest {
+
         private List<String> titlePrefixes;
         private List<String> containsContents;
         private List<String> authorIds;
@@ -80,4 +119,3 @@ public class DocumentManager {
         private String name;
     }
 }
-
