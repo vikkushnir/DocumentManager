@@ -67,13 +67,13 @@ public class DocumentManager {
     private boolean matchesTitlePrefixes(Document document, SearchRequest request) {
         List<String> titlePrefixes = request.getTitlePrefixes();
         return titlePrefixes == null || titlePrefixes.stream()
-                .allMatch(prefix -> document.getTitle().startsWith(prefix));
+                .allMatch(prefix -> document.getTitle().toLowerCase().startsWith(prefix.toLowerCase()));
     }
 
     private boolean matchesContainsContents(Document document, SearchRequest request) {
         List<String> containsContents = request.getContainsContents();
         return containsContents == null || containsContents.stream()
-                .allMatch(content -> document.getContent().contains(content));
+                .allMatch(content -> document.getContent().toLowerCase().contains(content.toLowerCase()));
     }
 
     private boolean matchesAuthorIds(Document document, SearchRequest request) {
@@ -89,8 +89,8 @@ public class DocumentManager {
     private boolean matchesCreatedTo(Document document, SearchRequest request) {
         Instant createdTo = request.getCreatedTo();
         return createdTo == null || !document.getCreated().isBefore(createdTo);
-
     }
+
     @Data
     @Builder
     public static class SearchRequest {

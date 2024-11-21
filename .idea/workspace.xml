@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5950faf3-5855-4d7c-82c5-9776de306d9d" name="Changes" comment="Implemented DocumentManager's methods(save, search, findById)">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/DocumentManagerTest.java" afterDir="false" />
+    <list default="true" id="5950faf3-5855-4d7c-82c5-9776de306d9d" name="Changes" comment="Updated pom file">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DocumentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DocumentManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +160,31 @@
       <option name="project" value="LOCAL" />
       <updated>1732103564232</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Implemented DocumentManager's methods(save, search, findById)">
+      <option name="closed" value="true" />
+      <created>1732118503811</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1732118503811</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Implemented DocumentManager's methods(save, search, findById)">
+      <option name="closed" value="true" />
+      <created>1732118570946</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1732118570947</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Updated pom file">
+      <option name="closed" value="true" />
+      <created>1732118762604</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732118762605</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -178,23 +201,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="DocumentManager project" />
     <MESSAGE value="Implemented DocumentManager's methods(save, search, findById)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented DocumentManager's methods(save, search, findById)" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/DocumentManager.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/DocumentManager.java</url>
-          <line>85</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Updated pom file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated pom file" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
